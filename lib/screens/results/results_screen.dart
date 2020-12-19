@@ -19,8 +19,21 @@ class ResultsScreen extends StatefulWidget {
 }
 
 class _ResultsScreenState extends State<ResultsScreen> {
-  List<String> _Models = ["Xception", "InceptionV3", "DenseNet201"];
+  List<String> _Models = ["Model 1", "Model 2", "Model 3"];
   String _selectedModel = "Xception";
+
+  String _SelectedModel(String model){
+    switch(model){
+      case 'Model 1':
+        return 'Xception';
+      case 'Model 2':
+        return 'InceptionV3';
+      case 'Model 3':
+        return 'DenseNet201';
+      default:
+        return '';
+    }
+  }
 
   List<DropdownMenuItem<String>> buildDropdownMenuItems(List<String> Models) {
     List<DropdownMenuItem<String>> items = List();
@@ -194,7 +207,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                               underline: SizedBox(),
                               onChanged: (newValue) {
                                 setState(() {
-                                  _selectedModel = newValue;
+                                  _selectedModel = _SelectedModel(newValue);
                                 });
                               },
                               items: _Models.map((model) {
